@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Link Checker - Secure Spot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h2>Secure Spot</h2>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/quiz">Quiz</a>
+            <a href="/link-checker">Link Checker</a>
+             <a href="/message-checker">Message Checker</a>
+        </nav>
+    </header>
+
+    <section id="checker">
+        <h2>Fraud Link Checker</h2>
+        <p>Paste any link below to find out whether it looks safe or fraudulent.</p>
+
+        <form method="POST" action="/link-checker">
+           <input type="text" name="url_input" placeholder="Paste the link here" required>
+           <button type="submit">Check Link</button>
+
+        </form>
+
+        {% if result %}
+        <div class="result-box {{ result.level }}">
+            <h3>{{ result.label }}</h3>
+
+            <p><strong>Domain:</strong> {{ result.domain }}</p>
+
+            <div class="score-bar">
+                <div class="score-fill {{ result.level }}" style="width: {{ result.score }}%;"></div>
+            </div>
+            <p class="score-text">Risk Score: {{ result.score }} / 100</p>
+
+            {% if result.ssl_status %}
+                <p><strong>SSL:</strong> {{ result.ssl_status }}</p>
+            {% endif %}
+
+            {% if result.findings %}
+            <ul class="findings">
+                {% for severity, message in result.findings %}
+                <li class="sev-{{ severity }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <div class="otp-warning">
+    <strong>Remember:</strong> Never share your OTP, PIN or password with anyone, even if they claim to be from your bank.
+</div>
+    </section>
+
+</body>
+</html>

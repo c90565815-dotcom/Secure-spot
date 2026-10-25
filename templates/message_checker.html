@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Message Checker - Secure Spot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h2>Secure Spot</h2>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/quiz">Quiz</a>
+            <a href="/link-checker">Link Checker</a>
+            <a href="/message-checker">Message Checker</a>
+        </nav>
+    </header>
+
+    <section id="checker">
+        <h2>Scam Message Checker</h2>
+        <p>Paste any SMS, WhatsApp or email text below to see if it looks like a scam.</p>
+
+        <form method="POST" action="/message-checker">
+            <textarea name="message_input" rows="6" placeholder="Paste the message here" required></textarea>
+            <button type="submit">Check Message</button>
+        </form>
+
+        {% if result %}
+
+            {% if result.level == "high" %}
+                <div class="result-box high">
+            {% elif result.level == "medium" %}
+                <div class="result-box medium">
+            {% elif result.level == "low" %}
+                <div class="result-box low">
+            {% else %}
+                <div class="result-box safe">
+            {% endif %}
+
+                <h3>{{ result.label }}</h3>
+
+                <div class="score-bar">
+                    {% if result.level == "high" %}
+                        <div class="score-fill high" style="width: {{ result.score }}%;"></div>
+                    {% elif result.level == "medium" %}
+                        <div class="score-fill medium" style="width: {{ result.score }}%;"></div>
+                    {% elif result.level == "low" %}
+                        <div class="score-fill low" style="width: {{ result.score }}%;"></div>
+                    {% else %}
+                        <div class="score-fill safe" style="width: {{ result.score }}%;"></div>
+                    {% endif %}
+                </div>
+
+                <p class="score-text">Risk Score: {{ result.score }} / 100</p>
+
+                {% if result.findings %}
+                    <ul class="findings">
+                        {% for finding in result.findings %}
+                            {% if finding[0] == "high" %}
+                                <li class="sev-high">{{ finding[1] }}</li>
+                            {% elif finding[0] == "medium" %}
+                                <li class="sev-medium">{{ finding[1] }}</li>
+                            {% else %}
+                                <li class="sev-low">{{ finding[1] }}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No suspicious signs were found in this message.</p>
+                {% endif %}
+
+            </div>
+
+        {% endif %}
+
+        <div class="otp-warning">
+            <strong>Remember:</strong> Banks and companies never ask for your OTP, PIN or password by message or call.
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Result - Secure Spot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h2>Secure Spot</h2>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/quiz">Retake Quiz</a>
+            <a href="/link-checker">Link Checker</a>
+             <a href="/message-checker">Message Checker</a>
+        </nav>
+    </header>
+
+    <section id="result-page">
+        <h2>Your Result</h2>
+        <p class="score">You scored {{ score }} out of {{ total }}</p>
+
+        {% if score == total %}
+            <p>Excellent! You have strong cyber awareness.</p>
+        {% elif score >= total // 2 %}
+            <p>Good, but there's room to improve your awareness.</p>
+        {% else %}
+            <p>You should review the Threats and Defense sections again.</p>
+        {% endif %}
+
+        <a href="/quiz"><button>Try Again</button></a>
+    </section>
+
+</body>
+</html>

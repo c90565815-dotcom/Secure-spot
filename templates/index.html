@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Secure Spot | Cyber Security Awareness</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav-container">
+            <h2 class="logo">SECURE SPOT</h2>
+
+            <nav>
+                <a href="/">Home</a>
+                <a href="/quiz">Quiz</a>
+                <a href="/link-checker">Link Checker</a>
+                <a href="/message-checker">Message Checker</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Hero Section -->
+        <section id="hero" class="container hero">
+            <p class="eyebrow">CYBER SECURITY AWARENESS</p>
+
+            <h1>
+                One careless click can undo
+                a lifetime of digital trust.
+            </h1>
+
+            <p class="hero-description">
+                Understand online threats. Build safer habits.
+                Protect your digital identity.
+            </p>
+
+            <div class="hero-actions">
+                <a href="/quiz" class="button button-black">
+                    Take the Quiz
+                </a>
+
+                <a href="/link-checker" class="button button-white">
+                    Check a Link
+                </a>
+                <a href="/message-checker" class="button button-black">
+                    Check a Message
+                </a>
+            </div>
+        </section>
+
+        <!-- Problem Statement -->
+        <section id="problem" class="section">
+            <div class="container">
+                <p class="eyebrow">01 / THE PROBLEM</p>
+
+                <h2>Why Cyber Awareness Matters</h2>
+
+                <p class="section-description">
+                    Online threats are becoming increasingly common.
+                    A lack of awareness can expose personal information,
+                    accounts, and devices to unnecessary risk.
+                </p>
+
+                <div class="grid">
+                    <article class="box">
+                        <span class="number">01</span>
+                        <h3>Online Threats</h3>
+                        <p>
+                            Phishing messages, malicious downloads,
+                            fake calls, and unsafe networks put users at risk.
+                        </p>
+                    </article>
+
+                    <article class="box">
+                        <span class="number">02</span>
+                        <h3>Lack of Awareness</h3>
+                        <p>
+                            Many users struggle to recognize suspicious
+                            activity before damage occurs.
+                        </p>
+                    </article>
+
+                    <article class="box">
+                        <span class="number">03</span>
+                        <h3>Preventable Attacks</h3>
+                        <p>
+                            Simple security habits can help prevent
+                            common mistakes and protect sensitive data.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Objectives -->
+        <section id="objectives" class="section section-dark">
+            <div class="container">
+                <p class="eyebrow">02 / OUR OBJECTIVES</p>
+
+                <h2>What Secure Spot Offers</h2>
+
+                <div class="grid">
+                    <article class="box box-dark">
+                        <h3>01. Educate</h3>
+                        <p>
+                            Understand common cyber threats
+                            and how they work.
+                        </p>
+                    </article>
+
+                    <article class="box box-dark">
+                        <h3>02. Equip</h3>
+                        <p>
+                            Learn practical steps to improve
+                            everyday online safety.
+                        </p>
+                    </article>
+
+                    <article class="box box-dark">
+                        <h3>03. Evaluate</h3>
+                        <p>
+                            Test your knowledge through
+                            interactive cyber awareness quizzes.
+                        </p>
+                    </article>
+
+                    <article class="box box-dark">
+                        <h3>04. Demonstrate</h3>
+                        <p>
+                            Present key cyber security concepts
+                            in an easy-to-understand format.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Common Threats -->
+        <section id="threats" class="section">
+            <div class="container">
+                <p class="eyebrow">03 / KNOW THE RISKS</p>
+
+                <h2>Common Cyber Threats</h2>
+
+                <div class="threat-list">
+                    <article class="threat-item">
+                        <span class="number">01</span>
+                        <div>
+                            <h3>Phishing</h3>
+                            <p>
+                                Fake emails, messages, or websites
+                                designed to steal sensitive information.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="threat-item">
+                        <span class="number">02</span>
+                        <div>
+                            <h3>Malware</h3>
+                            <p>
+                                Malicious software that can damage devices,
+                                steal data, or compromise systems.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="threat-item">
+                        <span class="number">03</span>
+                        <div>
+                            <h3>Social Engineering</h3>
+                            <p>
+                                Manipulation that tricks people into
+                                revealing information or granting access.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="threat-item">
+                        <span class="number">04</span>
+                        <div>
+                            <h3>Weak Passwords</h3>
+                            <p>
+                                Easily guessed or reused passwords
+                                that make accounts vulnerable.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="threat-item">
+                        <span class="number">05</span>
+                        <div>
+                            <h3>Public Wi-Fi Risks</h3>
+                            <p>
+                                Untrusted networks that may expose
+                                sensitive activity or information.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Defense -->
+        <section id="defense" class="section">
+            <div class="container">
+                <p class="eyebrow">04 / STAY PROTECTED</p>
+
+                <h2>Essential Security Practices</h2>
+
+                <div class="defense-list">
+                    <p>01. Verify the sender and destination before opening links.</p>
+                    <p>02. Use strong, unique passwords for every account.</p>
+                    <p>03. Enable two-factor authentication whenever possible.</p>
+                    <p>04. Avoid sensitive transactions on untrusted networks.</p>
+                    <p>05. Keep your operating system and applications updated.</p>
+                    <p>06. Never share passwords or verification codes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz -->
+        <section id="quiz-section" class="section">
+            <div class="container">
+                <div class="cta-box">
+                    <p class="eyebrow">05 / TEST YOUR KNOWLEDGE</p>
+
+                    <h2>How Cyber Aware Are You?</h2>
+
+                    <p>
+                        Answer five questions to test your understanding
+                        of common cyber security threats.
+                    </p>
+
+                    <a href="/quiz" class="button button-black">
+                        Start the Quiz
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <h3>SECURE SPOT</h3>
+
+            <p>Cyber Security Awareness Project</p>
+
+            <p class="copyright">
+                Learn. Identify. Protect.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

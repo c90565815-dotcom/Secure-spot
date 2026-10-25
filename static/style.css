@@ -1,0 +1,695 @@
+
+/* =========================
+   Global Styles
+========================= */
+
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --border: #d0d0d0;
+    --muted: #555555;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.7;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+/* =========================
+   Header and Navigation
+========================= */
+
+.header {
+    background: var(--white);
+    border-bottom: 1px solid var(--black);
+}
+
+.nav-container {
+    min-height: 76px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+nav a {
+    font-size: 14px;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+}
+
+nav a:hover {
+    opacity: 0.55;
+}
+
+
+/* =========================
+   Hero Section
+========================= */
+
+.hero {
+    padding-top: 115px;
+    padding-bottom: 115px;
+    border-bottom: 1px solid var(--black);
+}
+
+.eyebrow {
+    margin-bottom: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    max-width: 850px;
+    font-size: clamp(38px, 6vw, 70px);
+    line-height: 1.08;
+    letter-spacing: -2px;
+    font-weight: 800;
+}
+
+.hero-description {
+    max-width: 560px;
+    margin-top: 25px;
+    color: var(--muted);
+    font-size: 17px;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+
+/* =========================
+   Buttons
+========================= */
+
+.button {
+    display: inline-block;
+    padding: 12px 22px;
+    border: 1px solid var(--black);
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    transition: background 0.2s ease,
+                color 0.2s ease;
+}
+
+.button-black {
+    background: var(--black);
+    color: var(--white);
+}
+
+.button-black:hover {
+    background: var(--white);
+    color: var(--black);
+}
+
+.button-white {
+    background: var(--white);
+    color: var(--black);
+}
+
+.button-white:hover {
+    background: var(--black);
+    color: var(--white);
+}
+
+
+/* =========================
+   General Sections
+========================= */
+
+.section {
+    padding: 85px 0;
+    border-bottom: 1px solid var(--black);
+}
+
+.section h2 {
+    margin-bottom: 20px;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.section-description {
+    max-width: 700px;
+    margin-bottom: 35px;
+    color: var(--muted);
+}
+
+
+/* =========================
+   Grid Boxes
+========================= */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 35px;
+}
+
+.box {
+    padding: 25px;
+    border: 1px solid var(--black);
+    background: var(--white);
+}
+
+.number {
+    display: block;
+    margin-bottom: 18px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.box h3 {
+    margin-bottom: 10px;
+    font-size: 19px;
+}
+
+.box p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+
+/* =========================
+   Dark Section
+========================= */
+
+.section-dark {
+    background: var(--black);
+    color: var(--white);
+}
+
+.section-dark .eyebrow {
+    color: var(--white);
+}
+
+.box-dark {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--white);
+}
+
+.box-dark p {
+    color: #ffffff;
+}
+
+
+/* =========================
+   Threat List
+========================= */
+
+.threat-list {
+    margin-top: 30px;
+    border-top: 1px solid var(--black);
+}
+
+.threat-item {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 20px;
+    padding: 25px 10px;
+    border-bottom: 1px solid var(--black);
+}
+
+.threat-item .number {
+    margin: 5px 0 0;
+}
+
+.threat-item h3 {
+    margin-bottom: 6px;
+    font-size: 19px;
+}
+
+.threat-item p {
+    max-width: 650px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+
+/* =========================
+   Defense List
+========================= */
+
+.defense-list {
+    margin-top: 30px;
+    border-top: 1px solid var(--black);
+}
+
+.defense-list p {
+    padding: 17px 10px;
+    border-bottom: 1px solid var(--black);
+    font-size: 15px;
+}
+
+
+/* =========================
+   Quiz Call to Action
+========================= */
+
+.cta-box {
+    padding: 45px;
+    border: 1px solid var(--black);
+    background: var(--white);
+}
+
+.cta-box h2 {
+    max-width: 650px;
+}
+
+.cta-box > p:not(.eyebrow) {
+    max-width: 600px;
+    margin: 15px 0 25px;
+    color: var(--muted);
+}
+
+
+/* =========================
+   Footer
+========================= */
+
+.footer {
+    padding: 35px 0;
+    background: var(--black);
+    color: var(--white);
+}
+
+.footer-content h3 {
+    margin-bottom: 8px;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+}
+
+.footer-content p {
+    font-size: 13px;
+}
+
+.copyright {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--white);
+}
+
+
+/* =========================
+   Responsive Layout
+========================= */
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 18px 0;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+
+    .hero {
+        padding-top: 75px;
+        padding-bottom: 75px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1px;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .threat-item {
+        grid-template-columns: 40px 1fr;
+        gap: 12px;
+    }
+
+    .cta-box {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 400px) {
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .button {
+        width: 100%;
+    }
+}
+
+
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 9%;
+    border-bottom: 1px solid #000000;
+    background-color: #ffffff;
+}
+
+header h2 {
+    font-size: 24px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+nav {
+    display: flex;
+    gap: 32px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Quiz Section */
+#quiz-page {
+    padding: 80px 9%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#quiz-page h2 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+#quiz-page > p {
+    font-size: 16px;
+    color: #555555;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* Individual Questions */
+.quiz-question {
+    margin-bottom: 30px;
+    padding: 25px;
+    border: 1px solid #dddddd;
+    background-color: #ffffff;
+}
+
+.quiz-question p {
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.quiz-question label {
+    display: inline-block;
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.quiz-question input[type="radio"] {
+    margin-right: 8px;
+    accent-color: #000000;
+    cursor: pointer;
+}
+
+/* Submit Button */
+button {
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #000000;
+    padding: 16px 25px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    header {
+        padding: 20px 5%;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    header h2 {
+        font-size: 21px;
+    }
+
+    nav {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #quiz-page {
+        padding: 45px 5%;
+    }
+
+    #quiz-page h2 {
+        font-size: 32px;
+    }
+
+    .quiz-question {
+        padding: 18px;
+    }
+}
+
+
+
+/* Link Checker Page */
+#link-checker-page {
+    padding: 80px 9%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#link-checker-page h2 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+#link-checker-page > p {
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+/* Link Checker Form */
+.checker-form {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 40px;
+    max-width: 750px;
+}
+
+.checker-form input[type="text"] {
+    flex: 1;
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 15px;
+    outline: none;
+}
+
+.checker-form input[type="text"]:focus {
+    border: 2px solid #000000;
+}
+
+.checker-form input::placeholder {
+    color: #777777;
+}
+
+/* Buttons */
+.checker-form button {
+    padding: 16px 25px;
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #000000;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.checker-form button:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Result Box */
+.result-box {
+    padding: 25px;
+    margin: 30px 0;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    overflow-wrap: anywhere;
+}
+
+.result-box p {
+    font-size: 15px;
+    margin-bottom: 18px;
+    line-height: 1.6;
+}
+
+.result-box h3 {
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+/* Safe and Suspicious Results */
+.result-box.safe {
+    border-left: 5px solid #000000;
+}
+
+.result-box.danger {
+    border-left: 5px solid #777777;
+}
+
+.result-box ul {
+    padding-left: 22px;
+    margin-top: 15px;
+}
+
+.result-box li {
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* OTP Warning Section */
+.otp-warning {
+    margin-top: 45px;
+    padding: 25px;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+}
+
+.otp-warning h3 {
+    font-size: 21px;
+    margin-bottom: 15px;
+}
+
+.otp-warning p {
+    font-size: 15px;
+    color: #444444;
+    line-height: 1.8;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    #link-checker-page {
+        padding: 45px 5%;
+    }
+
+    #link-checker-page h2 {
+        font-size: 32px;
+    }
+
+    .checker-form {
+        flex-direction: column;
+    }
+
+    .checker-form button {
+        width: 100%;
+    }
+
+    .result-box,
+    .otp-warning {
+        padding: 18px;
+    }
+
+    .otp-warning h3 {
+        font-size: 19px;
+    }
+}
