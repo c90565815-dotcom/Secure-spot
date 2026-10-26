@@ -1,39 +1,40 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, redirect, url_for
+import random
 import re
 import ssl
 import socket
 from urllib.parse import urlparse
+from questions import quiz_questions
 
 app = Flask(__name__)
 
 # ---------------- Quiz Data ----------------
-quiz_questions = [
-    {
-        "question": "You get an email saying you won a lottery you never entered. What should you do?",
-        "options": ["Click the link to claim it", "Delete/ignore it", "Reply with your bank details"],
-        "answer": "Delete/ignore it"
-    },
-    {
-        "question": "Which of these makes a password strong?",
-        "options": ["Your birthdate", "A mix of letters, numbers, symbols", "Your name"],
-        "answer": "A mix of letters, numbers, symbols"
-    },
-    {
-        "question": "Is it safe to do online banking on public Wi-Fi?",
-        "options": ["Yes, always", "No, it's risky", "Only if it's free Wi-Fi"],
-        "answer": "No, it's risky"
-    },
-    {
-        "question": "A caller claims to be from your bank and asks for your OTP. What should you do?",
-        "options": ["Share the OTP", "Never share OTP, hang up and verify", "Ask them to call later"],
-        "answer": "Never share OTP, hang up and verify"
-    },
-    {
-        "question": "What does 'phishing' mean?",
-        "options": ["A type of fishing sport", "Tricking people into giving personal info", "A antivirus software"],
-        "answer": "Tricking people into giving personal info"
-    }
-]
+app.secret_key = "koi-bhi-lamba-random-text-likho"
+
+
+@app.route("/quiz")
+def quiz():
+    count = min(5, len(quiz_questions))
+    ids = random.sample(range(len(quiz_questions)), count)
+    session["quiz_ids"] = ids
+    questions = [quiz_questions[i] for i in ids]
+    return render_template("quiz.html", questions=questions)
+
+
+@app.route("/submit_quiz", methods=["POST"])
+def submit_quiz():
+    ids = session.get("quiz_ids")
+    if not ids:
+        return redirect(url_for("quiz"))
+
+    score = 0
+    for n, qid in enumerate(ids):
+        if request.form.get(f"question{n}") == quiz_questions[qid]["answer"]:
+            score += 1
+    total = len(ids)
+
+    return render_template("result.html", score=score, total=total)
+
 
 # ---------------- Link Checker Data ----------------
 SUSPICIOUS_TLDS = [".xyz", ".tk", ".ml", ".ga", ".cf", ".top", ".click", ".work", ".zip"]
@@ -46,6 +47,8 @@ BRANDS = ["google", "paypal", "amazon", "facebook", "instagram", "whatsapp",
 
 
 # ---------------- Link Checker Logic ----------------
+
+# this function checks the SSL certificate of a given hostname
 def check_ssl(hostname):
     """Connects to the server and checks whether the SSL certificate is valid."""
     try:
@@ -59,6 +62,7 @@ def check_ssl(hostname):
         return None, "SSL check could not be completed (server did not respond)"
 
 
+# this checks http or https
 def check_link(url):
     url = url.strip()
     if not url.startswith(("http://", "https://")):
@@ -157,20 +161,23 @@ def check_link(url):
         "findings": findings,
         "ssl_status": ssl_status,
     }
-#-----------------message_check-----------------------------------
-  #-----------------message_check---------------
+
+
+# ---------------- Message Checker ----------------
 @app.route("/message-checker", methods=["GET", "POST"])
 def message_checker():
     result = None
     if request.method == "POST":
         result = check_message(request.form["message_input"])
     return render_template("message_checker.html", result=result)
+
+
 def check_message(text):
     original = text.strip()
-    msg = original.lower()      
+    msg = original.lower()
 
-    score = 0                   
-    findings = []              
+    score = 0
+    findings = []
 
     # 1. Urgency
     if "urgent" in msg or "immediately" in msg or "act now" in msg or "last chance" in msg or "within 24 hours" in msg:
@@ -259,28 +266,12 @@ def check_message(text):
         "label": label,
         "findings": findings,
     }
+
+
 # ---------------- Routes ----------------
 @app.route('/')
 def home():
     return render_template('index.html')
-
-
-@app.route('/quiz')
-def quiz():
-    return render_template('quiz.html', questions=quiz_questions)
-
-
-@app.route('/submit_quiz', methods=['POST'])
-def submit_quiz():
-    score = 0
-    total = len(quiz_questions)
-
-    for i, q in enumerate(quiz_questions):
-        user_answer = request.form.get(f'question{i}')
-        if user_answer == q['answer']:
-            score += 1
-
-    return render_template('result.html', score=score, total=total)
 
 
 @app.route("/link-checker", methods=["GET", "POST"])

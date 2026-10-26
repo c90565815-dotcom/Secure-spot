@@ -46,12 +46,21 @@ a {
 .header {
     background: var(--white);
     border-bottom: 1px solid var(--black);
+    width: 100%;
+    height: auto;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .nav-container {
-    min-height: 76px;
+    min-height: 35px;
+    width: 100%;
+    height: auto;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
     gap: 24px;
 }
@@ -59,7 +68,7 @@ a {
 .logo {
     font-size: 21px;
     font-weight: 800;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
 }
 
 nav {
@@ -69,9 +78,10 @@ nav {
 }
 
 nav a {
-    font-size: 14px;
-    font-weight: 600;
-    transition: opacity 0.2s ease;
+    text-decoration: none;
+    color: #000000;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 nav a:hover {
@@ -433,13 +443,6 @@ nav {
     gap: 32px;
 }
 
-nav a {
-    text-decoration: none;
-    color: #000000;
-    font-size: 14px;
-    font-weight: bold;
-}
-
 nav a:hover {
     text-decoration: underline;
 }
@@ -565,9 +568,21 @@ button:hover {
 }
 
 /* Link Checker Form */
+
+#checker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 0;
+    gap: 22px;
+}
+
 .checker-form {
     display: flex;
     gap: 12px;
+    flex-wrap: wrap;
+    flex-direction: column;
     margin-bottom: 40px;
     max-width: 750px;
 }

@@ -13,7 +13,7 @@
             <a href="/">Home</a>
             <a href="/quiz">Quiz</a>
             <a href="/link-checker">Link Checker</a>
-             <a href="/message-checker">Message Checker</a>
+            <a href="/message-checker">Message Checker</a>
         </nav>
     </header>
 
@@ -22,12 +22,13 @@
         <p>Answer honestly and see how aware you really are.</p>
 
         <form action="/submit_quiz" method="POST">
-            {% for i in range(questions|length) %}
+            {% for q in questions %}
+                {% set qn = loop.index0 %}
                 <div class="quiz-question">
-                    <p><strong>Q{{ i + 1 }}. {{ questions[i].question }}</strong></p>
-                    {% for option in questions[i].options %}
+                    <p><strong>Q{{ loop.index }}. {{ q.question }}</strong></p>
+                    {% for option in q.options %}
                         <label>
-                            <input type="radio" name="question{{ i }}" value="{{ option }}" required>
+                            <input type="radio" name="question{{ qn }}" value="{{ option }}" required>
                             {{ option }}
                         </label><br>
                     {% endfor %}
